@@ -215,6 +215,7 @@ const profChooseDate = async (req, res) => {
   try {
     // Create a new Date object to get the current date and time
     const currentDate = new Date();
+    console.log(currentDate);
 
     // Extract the year, month, and day
     const year = currentDate.getFullYear();
@@ -332,6 +333,21 @@ const profGetStudentList = async (req, res) => {
 
 const profMarksAttendance = async (req, res) => {
   try {
+    // Create a new Date object to get the current date and time
+    const currentDate = new Date();
+    console.log(currentDate);
+
+    // Extract the year, month, and day
+    const year = currentDate.getFullYear();
+    // JavaScript months are zero-based, so we add 1 to get the actual month
+    const month = String(currentDate.getMonth() + 1).padStart(2, "0");
+    const day = String(currentDate.getDate()).padStart(2, "0");
+
+    // Create the formatted date string
+    const formattedDate = `${year}-${month}-${day}`;
+    console.log(formattedDate);
+    // const formattedDate = '2023-09-05';
+
     const sid_list = req.body.stud_id;
     const attend_student_list = req.body.attend_list;
     const course_id = req.headers.courseid;
@@ -350,7 +366,7 @@ const profMarksAttendance = async (req, res) => {
       let str = "";
       for (let i = 0; i < sid_list.length; i++) {
         str += "(";
-        str += "CURDATE()";
+        str += '"' + formattedDate + '"';
         str += ",";
         str += sid_list[i].toString();
         str += ",";
@@ -361,7 +377,7 @@ const profMarksAttendance = async (req, res) => {
       }
       str = str.slice(0, -1); // Remove the last character
       // let s1 = "INSERT INTO mark_attendance (date,stud_id,course_id,attendance) VALUES ";
-      // console.log(s1+str);
+      console.log(str);
       await pool.query(
         `INSERT INTO mark_attendance (date,stud_id,course_id,attendance) VALUES ${str}`,
         async (error, result) => {
