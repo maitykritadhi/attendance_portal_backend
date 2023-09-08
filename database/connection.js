@@ -14,6 +14,22 @@ const pool = mysql.createPool({
 module.exports = pool;
 */
 
+/*
+const mysql = require("mysql");
+
+const pool = mysql.createPool({
+  host: "localhost",
+  user: "root",
+  password: "Kritadhi*123",
+  database: "freesqlonline_attendance",
+  waitForConnections: true,
+  connectionLimit: 10,
+  multipleStatements: true
+});
+
+module.exports = pool;
+*/
+
 const mysql = require("mysql");
 
 const pool = mysql.createPool({
@@ -27,3 +43,4 @@ const pool = mysql.createPool({
 });
 
 module.exports = pool;
+
