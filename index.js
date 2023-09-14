@@ -2,7 +2,7 @@ const express = require('express');
 const connections = require('./database/connection');
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 // // This should already be declared in your API file
 // var app = express();
