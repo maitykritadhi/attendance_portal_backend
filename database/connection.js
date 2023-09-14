@@ -33,10 +33,10 @@ module.exports = pool;
 const mysql = require("mysql");
 
 const pool = mysql.createPool({
-  host: "sql12.freesqldatabase.com",
-  user: "sql12644411",
-  password: "Qwerty*123",
-  database: "sql12644411",
+  host: "attendance.clwzrtdg5hvp.ap-south-1.rds.amazonaws.com",
+  user: "admin",
+  password: "Kritadhi*123",
+  database: "attendance",
   waitForConnections: true,
   connectionLimit: 10,
   multipleStatements: true,
