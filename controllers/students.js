@@ -280,7 +280,7 @@ const studentgetResponse = async (req, res) => {
     const sid = req.userId;
     const flagofuser = Number(req.flag);
     await pool.query(
-      "SELECT r.id,r.stud_mssg,r.prof_mssg,r.stud_id,r.state,r.course_id,c.cid FROM attendance.request r JOIN attendance.courses c ON c.id = r.course_id WHERE stud_id = ?",
+      "SELECT r.id,r.stud_mssg,r.prof_mssg,r.stud_id,r.state,r.course_id,c.cid FROM request r JOIN courses c ON c.id = r.course_id WHERE stud_id = ?",
       [sid],
       async (error, result) => {
         if (error) {
